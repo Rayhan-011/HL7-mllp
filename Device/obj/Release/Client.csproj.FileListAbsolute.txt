@@ -1,0 +1,7 @@
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Release\Client.exe.config
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Release\Client.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Release\Client.pdb
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.csproj.AssemblyReference.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.csproj.CoreCompileInputs.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.pdb

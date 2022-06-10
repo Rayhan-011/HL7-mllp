@@ -1,0 +1,10 @@
+﻿  <appSettings>
+    <!-- <add key="DeviceIP" value="192.168.100.209"/>-->
+    <!-- <add key="DeviceIP" value="192.168.100.38"/>-->
+    <add key="DeviceIP1" value="Device1:192.168.100.209:11000"/>
+    <add key="DeviceIP2" value="Device2:192.168.100.209:1100"/>
+   
+    <add key="SourceFolderPath" value="E:\Resources\"/>
+    <add key="DeviceExceptionFolder" value="E:\Work.Sarah\Logs\Device\Exceptions"/>
+    <add key="DeviceSuccsessFolder" value="E:\Work.Sarah\Logs\Device\Succsess"/>
+  </appSettings>

@@ -1,0 +1,12 @@
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.csproj.AssemblyReference.cache
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.csproj.CoreCompileInputs.cache
+E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.exe.config
+E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.exe
+E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.pdb
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.exe
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.pdb
+E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.exe.manifest
+E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.application
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.exe.manifest
+E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.application

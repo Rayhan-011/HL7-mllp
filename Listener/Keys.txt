@@ -1,0 +1,8 @@
+﻿<appSettings>
+    
+    <add key="DeviceIP1" value="Device1:11000"/>
+    <add key="DeviceIP2" value="Device2:1100"/>   
+    <add key="DestinationFolder" value="E:\Work.Sarah\EDI"/>
+    <add key="ListenerExceptionFolder" value="E:\Work.Sarah\Logs\Listener\Exceptions"/>
+    <add key="ListenerSuccsessFolder" value="E:\Work.Sarah\Logs\Listener\Succsess"/>
+  </appSettings>

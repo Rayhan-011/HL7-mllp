@@ -1,0 +1,10 @@
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.exe.config
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.pdb
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.csproj.CoreCompileInputs.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.pdb
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.application
