@@ -5,3 +5,7 @@ D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.cspr
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.csproj.CoreCompileInputs.cache
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.exe
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.pdb
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Release\Client.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Release\Client.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Release\Client.application

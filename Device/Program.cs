@@ -13,13 +13,48 @@ namespace Client
     {
         public static int Main(String[] args)
         {
-            StartClient();
+            try 
+            {
+                StartClient();
+            }
+            catch (Exception ex)
+            {
+                string FolderName = DateTime.Now.ToString("yyyyMMdd");
+                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolderMain"];
+                
+                string DestFolderPathFinal3 = Path.Combine(ExceptionFolder);
+
+                if (!Directory.Exists(DestFolderPathFinal3))
+                {
+                    Directory.CreateDirectory(DestFolderPathFinal3);
+
+
+                }
+                string DestFolderPathFinal = Path.Combine(DestFolderPathFinal3, FolderName);
+                if (!Directory.Exists(DestFolderPathFinal))
+                {
+                    Directory.CreateDirectory(DestFolderPathFinal);
+
+
+                }
+
+                string ExceptionFolderNewFile = Path.Combine(DestFolderPathFinal, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
+
+
+                StreamWriter sw = new StreamWriter(ExceptionFolderNewFile);
+                sw.Write("Log Generated on: " + DateTime.Now + "\n" + ex.ToString());
+                sw.Flush();
+                sw.Close();
+
+                Console.WriteLine("Excetption: " + ex);
+            }
+            
             return 0;
         }
 
         public static void StartClient()
         {
-            // byte[] bytes = new byte[1024];
+           
             byte[] bytes = new byte[1048576];
 
             int filesent = 0;
@@ -50,16 +85,13 @@ namespace Client
                         // In this case, we get one IP address of localhost that is IP : 127.0.0.1
                         // If a host has multiple addresses, you will get a list of addresses
 
-
-                        //IPHostEntry host = Dns.GetHostEntry("localhost");
-                       // IPHostEntry host2 = Dns.GetHostEntry(IP);
-
                         IPAddress ipAddress = IPAddress.Parse(IP);
                         IPEndPoint remoteEP = new IPEndPoint(ipAddress, multipleports);
 
                         // Create a TCP/IP  socket.
                         Socket sender = new Socket(ipAddress.AddressFamily,
                         SocketType.Stream, ProtocolType.Tcp);
+
                         // Connect to Remote EndPoint
                         sender.Connect(remoteEP);
 
@@ -75,9 +107,7 @@ namespace Client
                             string line = sr.ReadLine();
                             message += line;
 
-
-
-
+                            //Read Data from file
                             while (line != null)
                             {
 
@@ -90,17 +120,9 @@ namespace Client
                             sr.Close();
 
 
-                            //  }
-
-
-
-
                             // Connect the socket to the remote endpoint. Catch any errors.
                             try
                             {
-
-
-
 
                                 // Encode the data string into a byte array.
 
@@ -116,8 +138,7 @@ namespace Client
                                 {
                                     filesent = filesent;
                                 }
-                                // bytesSent = sender.Send(msg2);    
-
+                             
                                 // Receive the response from the remote device.
                                 int bytesRec = sender.Receive(bytes);
                                 if (bytesRec != null)
@@ -128,9 +149,7 @@ namespace Client
                                 Console.WriteLine("Echoed test = {0}",
                                     Encoding.ASCII.GetString(bytes, 0, bytesRec));
 
-                                //  Release the socket.
-                                //  sender.Shutdown(SocketShutdown.Both);
-                                //     sender.Close();
+                             
 
                             }
                             catch (ArgumentNullException ane)
@@ -210,10 +229,7 @@ namespace Client
                             }
                             catch (Exception e)
                             {
-                                // string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolder"];
-                                // string ExceptionFolderNewFile = Path.Combine(ExceptionFolder, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
-
-
+                            
                                 string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
 
                                 string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
@@ -252,8 +268,25 @@ namespace Client
                     }
                     catch (Exception e)
                     {
-                        string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolder"];
-                        string ExceptionFolderNewFile = Path.Combine(ExceptionFolder, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
+
+
+                        string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
+
+                        string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
+
+                        if (!Directory.Exists(ExceptionFolderNewFile2))
+                        {
+                            Directory.CreateDirectory(ExceptionFolderNewFile2);
+
+
+                        }
+                        string ExceptionFolderNewFile = Path.Combine(ExceptionFolderNewFile2, FolderName);
+                        if (!Directory.Exists(ExceptionFolderNewFile))
+                        {
+                            Directory.CreateDirectory(ExceptionFolderNewFile);
+
+
+                        }
 
                         bool fileExist2 = File.Exists(ExceptionFolderNewFile);
 
@@ -269,7 +302,7 @@ namespace Client
                             sw6.Flush();
                             sw6.Close();
                         }
-
+                        Console.WriteLine("Exception:" + e);
                     }
                     string LogFilesSuccsess = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
 
@@ -318,7 +351,7 @@ namespace Client
             else 
             {
                 string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolder"];
-                //  string DestFolderPathFinal2 = System.Configuration.ConfigurationSettings.AppSettings["DestinationFolder"];
+                
                 string Main = "IP Exceptions";
                 string FolderName = DateTime.Now.ToString("yyyyMMdd");
                 string DestFolderPathFinal3 = Path.Combine(ExceptionFolder, Main);

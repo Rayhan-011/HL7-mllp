@@ -8,3 +8,4 @@ D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.e
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\bin\Release\Listner.application
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.exe.manifest
 D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Listener\obj\Release\Listner.csproj.AssemblyReference.cache

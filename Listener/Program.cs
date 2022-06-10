@@ -14,14 +14,49 @@ namespace Listener
     {
         public static int Main(String[] args)
         {
-            StartServer();
+            try 
+            {
+                StartServer();
+            }
+            catch (Exception ex) 
+            {
+                string FolderName = DateTime.Now.ToString("yyyyMMdd");
+                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["ListenerExceptionFolder"];
+                //  string DestFolderPathFinal2 = System.Configuration.ConfigurationSettings.AppSettings["DestinationFolder"];
+
+                string DestFolderPathFinal3 = Path.Combine(ExceptionFolder);
+
+                if (!Directory.Exists(DestFolderPathFinal3))
+                {
+                    Directory.CreateDirectory(DestFolderPathFinal3);
+
+
+                }
+                string DestFolderPathFinal = Path.Combine(DestFolderPathFinal3, FolderName);
+                if (!Directory.Exists(DestFolderPathFinal))
+                {
+                    Directory.CreateDirectory(DestFolderPathFinal);
+
+
+                }
+
+                string ExceptionFolderNewFile = Path.Combine(DestFolderPathFinal, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
+
+
+                StreamWriter sw = new StreamWriter(ExceptionFolderNewFile);
+                sw.Write("Log Generated on: " + DateTime.Now + "\n" + ex.ToString());
+                sw.Flush();
+                sw.Close();
+
+                Console.WriteLine("Exception: " +ex.ToString());
+            }
+            
             return 0;
         }
 
         public static void StartServer()
         {
-
-            try{ 
+            Console.WriteLine("Listener is Ready");
 
             string[] repositoryUrls = ConfigurationManager.AppSettings.AllKeys
                              .Where(key => key.StartsWith("DeviceIP"))
@@ -36,26 +71,23 @@ namespace Listener
 
                     string[] DeviceIpPort = appsettings.Split(':');
                     string devicename = DeviceIpPort[0];
-                    //   string IP = DeviceIpPort[1];
+                    
                     int multipleports = int.Parse(DeviceIpPort[1]);
 
 
-                    //IPHostEntry host2 = Dns.GetHostEntry(IP);
                     var host = Dns.GetHostEntry(Dns.GetHostName());
                     try
                     {
                         foreach (var ip in host.AddressList)
                         {
-                            if (ip.AddressFamily == AddressFamily.InterNetwork && ip.AddressFamily != AddressFamily.InterNetworkV6 )
+                            if (ip.AddressFamily == AddressFamily.InterNetwork)
                             {
-                                    
-                                
                                 ipv4 = ip.ToString();
-                                    if (ipv4.StartsWith("192"))
-                                    {
-                                        Console.WriteLine("\r IPV4 Address: " + ipv4 + "\r \n Port: " + multipleports);
-                                        break;
-                                    }
+                                if (ipv4.StartsWith("192")) 
+                                {
+                                    Console.WriteLine("\r IPV4 Address: " + ipv4 + "\r \n Port: " + multipleports);
+                                }
+                                
                             }
                         }
                     }
@@ -471,15 +503,7 @@ namespace Listener
                 Console.WriteLine("\n IP address not provided...");
             }
 
-            } 
-            catch(Exception e)
-            { 
-                
-                
-                Console.WriteLine(e.Message);
 
-
-            }
 
 
             Console.WriteLine("\n Press any key to continue...");
