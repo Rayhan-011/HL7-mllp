@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Listner.exe" size="12240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Listner.exe" size="13776">
       <assemblyIdentity name="Listner" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+nsT0OZFfbyD/kGh+xKUQQlGWka9bn6RPgCIZ48Dt9A=</dsig:DigestValue>
+        <dsig:DigestValue>ziCoI2d0AZP4jtZ3sCholPbC5PNgH8ajkjZ25TFix3g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Listner.exe.config" size="688">
+  <file name="Listner.exe.config" size="764">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xa4rq9dZdxz/3suXQQ0Gu0hO1uxSeqWGmMzA0Lfsdlk=</dsig:DigestValue>
+      <dsig:DigestValue>glj2qSeufckjlHqvM1mCIq5WaTEkeGzcohjRfTkCGHs=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

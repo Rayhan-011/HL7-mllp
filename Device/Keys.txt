@@ -3,7 +3,8 @@
     <add key="DeviceIP2" value="Device2:192.168.100.213:1100"/>
    
     <add key="SourceFolderPath" value="E:\Resource\"/>
-    <add key="DeviceExceptionFolder" value="E:\HL7Listener\Logs\Device\Exceptions"/>
-    <add key="DeviceExceptionFolderMain" value="E:\HL7Listener\Logs\Device\Exceptions\Main"/>
-    <add key="DeviceSuccsessFolder" value="E:\HL7Listener\Logs\Device\Succsess"/>
+    <add key="DeviceExceptionFolder" value="G:\HL7Listener\Logs\Device\Exceptions"/>
+    <add key="DeviceExceptionFolderMain" value="G:\HL7Listener\Logs\Device\Exceptions\Main"/>
+    <add key="DeviceSuccsessFolder" value="G:\HL7Listener\Logs\Device\Succsess"/>
+  
   </appSettings>

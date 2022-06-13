@@ -19,36 +19,11 @@ namespace Client
             }
             catch (Exception ex)
             {
-                string FolderName = DateTime.Now.ToString("yyyyMMdd");
-                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolderMain"];
-                
-                string DestFolderPathFinal3 = Path.Combine(ExceptionFolder);
-
-                if (!Directory.Exists(DestFolderPathFinal3))
-                {
-                    Directory.CreateDirectory(DestFolderPathFinal3);
-
-
-                }
-                string DestFolderPathFinal = Path.Combine(DestFolderPathFinal3, FolderName);
-                if (!Directory.Exists(DestFolderPathFinal))
-                {
-                    Directory.CreateDirectory(DestFolderPathFinal);
-
-
-                }
-
-                string ExceptionFolderNewFile = Path.Combine(DestFolderPathFinal, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
-
-
-                StreamWriter sw = new StreamWriter(ExceptionFolderNewFile);
-                sw.Write("Log Generated on: " + DateTime.Now + "\n" + ex.ToString());
-                sw.Flush();
-                sw.Close();
-
-                Console.WriteLine("Excetption: " + ex);
+                LogData("DeviceExceptionFolderMain", "Code Exception", DateTime.Now.ToString("yyyyMMdd_hhmmss"), ex.ToString());
+    
             }
-            
+
+            Console.ReadKey();
             return 0;
         }
 
@@ -59,8 +34,7 @@ namespace Client
 
             int filesent = 0;
             int ackRec = 0;
-            string SourceFolderPath = System.Configuration.ConfigurationSettings.AppSettings["SourceFolderPath"];
-
+           
           
            
             string[] repositoryUrls = ConfigurationManager.AppSettings.AllKeys
@@ -98,10 +72,11 @@ namespace Client
 
                         Console.WriteLine("Socket connected to {0}",
                           sender.RemoteEndPoint.ToString());
+                        string SourceFolderPath = System.Configuration.ConfigurationSettings.AppSettings["SourceFolderPath"];
 
                         foreach (var srcPath in Directory.GetFiles(SourceFolderPath))
                         {
-                            string message = string.Empty;
+                            string message = string.Empty;             
                             string SourceFolderPathFinalWithFile = Path.Combine(SourceFolderPath, Path.GetFileName(srcPath));
                             StreamReader sr = new StreamReader(SourceFolderPathFinalWithFile);
                             string line = sr.ReadLine();
@@ -133,6 +108,8 @@ namespace Client
                                 if (bytesSent != null)
                                 {
                                     filesent = filesent + 1;
+                                    LogData("DeviceSuccsessFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "File: " + filesent + " Sent" + Environment.NewLine);
+
                                 }
                                 else
                                 {
@@ -144,6 +121,8 @@ namespace Client
                                 if (bytesRec != null)
                                 {
                                     ackRec = ackRec + 1;
+                                    LogData("DeviceSuccsessFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "Acknowledgment: " + ackRec + " Received" + Environment.NewLine);
+
                                 }
                                 else { ackRec = ackRec; }
                                 Console.WriteLine("Echoed test = {0}",
@@ -154,195 +133,43 @@ namespace Client
                             }
                             catch (ArgumentNullException ane)
                             {
-                                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
-
-                                string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
-
-                                if (!Directory.Exists(ExceptionFolderNewFile2))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile2);
+                                LogData("DeviceExceptionFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "ArgumentNullException: { 0} " + ane.ToString() + Environment.NewLine);
 
 
-                                }
-                                string ExceptionFolderNewFile = Path.Combine(ExceptionFolderNewFile2, FolderName);
-                                if (!Directory.Exists(ExceptionFolderNewFile))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile);
-
-
-                                }
-
-                                bool fileExist2 = File.Exists(ExceptionFolderNewFile);
-
-                                if (fileExist2)
-                                {
-                                    File.AppendAllText(ExceptionFolderNewFile, "Log Generated on: " + DateTime.Now + "\n ArgumentNullException : {0}" + ane.ToString() + Environment.NewLine);
-
-                                }
-                                else
-                                {
-                                    StreamWriter sw6 = new StreamWriter(ExceptionFolderNewFile);
-                                    sw6.Write("Log Generated on: " + DateTime.Now + "\n ArgumentNullException : {0}" + ane.ToString() + Environment.NewLine);
-                                    sw6.Flush();
-                                    sw6.Close();
-                                }
 
                                 Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
                             }
                             catch (SocketException se)
                             {
-                                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
-
-                                string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
-
-                                if (!Directory.Exists(ExceptionFolderNewFile2))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile2);
-
-
-                                }
-                                string ExceptionFolderNewFile = Path.Combine(ExceptionFolderNewFile2, FolderName);
-                                if (!Directory.Exists(ExceptionFolderNewFile))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile);
-
-
-                                }
-                                bool fileExist2 = File.Exists(ExceptionFolderNewFile);
-
-                                if (fileExist2)
-                                {
-                                    File.AppendAllText(ExceptionFolderNewFile, "Log Generated on: " + DateTime.Now + "\n SocketException : {0}" + se.ToString() + Environment.NewLine);
-
-                                }
-                                else
-                                {
-                                    StreamWriter sw6 = new StreamWriter(ExceptionFolderNewFile);
-                                    sw6.Write("Log Generated on: " + DateTime.Now + "\n SocketException : {0}" + se.ToString() + Environment.NewLine);
-                                    sw6.Flush();
-                                    sw6.Close();
-                                }
-
-
-
-                                Console.WriteLine("SocketException : {0}", se.ToString());
+                                LogData("DeviceExceptionFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "SocketException : {0}" + se.ToString() + Environment.NewLine);
+                                
                             }
                             catch (Exception e)
                             {
-                            
-                                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
+                                LogData("DeviceExceptionFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "Unexpected exception : {0}" + e.ToString());
 
-                                string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
-
-                                if (!Directory.Exists(ExceptionFolderNewFile2))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile2);
-
-
-                                }
-                                string ExceptionFolderNewFile = Path.Combine(ExceptionFolderNewFile2, FolderName);
-                                if (!Directory.Exists(ExceptionFolderNewFile))
-                                {
-                                    Directory.CreateDirectory(ExceptionFolderNewFile);
-
-
-                                }
-
-
-                                StreamWriter sw4 = new StreamWriter(ExceptionFolderNewFile);
-                                sw4.Write("Log Generated on: " + DateTime.Now + "\n Unexpected exception : {0}" + e.ToString());
-                                sw4.Close();
-                                Console.WriteLine(e.ToString());
-                                Console.WriteLine(e.ToString());
-                                Console.WriteLine("Unexpected exception : {0}", e.ToString());
                             }
                         }
+                        //yyyyMMdd_hhmmss
 
+                        LogData("DeviceSuccsessFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd_hhmmss"), "Total File Sent: " + filesent + "\n Total Acknowledgment Recived: " + ackRec + Environment.NewLine);
 
                         // Encode the data string into a byte array.
 
                         byte[] msg3 = Encoding.ASCII.GetBytes("<EOF>");
-
+                        
                         // Send the data through the socket.
                         int bytesSent2 = sender.Send(msg3);
+                       
                     }
                     catch (Exception e)
                     {
-
-
-                        string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
-
-                        string ExceptionFolderNewFile2 = Path.Combine(ExceptionFolder, devicename + "_" + multipleports.ToString());
-
-                        if (!Directory.Exists(ExceptionFolderNewFile2))
-                        {
-                            Directory.CreateDirectory(ExceptionFolderNewFile2);
-
-
-                        }
-                        string ExceptionFolderNewFile = Path.Combine(ExceptionFolderNewFile2, FolderName);
-                        if (!Directory.Exists(ExceptionFolderNewFile))
-                        {
-                            Directory.CreateDirectory(ExceptionFolderNewFile);
-
-
-                        }
-
-                        bool fileExist2 = File.Exists(ExceptionFolderNewFile);
-
-                        if (fileExist2)
-                        {
-                            File.AppendAllText(ExceptionFolderNewFile, "Log Generated on: " + DateTime.Now + "\n" + e.ToString() + Environment.NewLine);
-
-                        }
-                        else
-                        {
-                            StreamWriter sw6 = new StreamWriter(ExceptionFolderNewFile);
-                            sw6.Write("Log Generated on: " + DateTime.Now + "\n" + e.ToString() + Environment.NewLine);
-                            sw6.Flush();
-                            sw6.Close();
-                        }
-                        Console.WriteLine("Exception:" + e);
-                    }
-                    string LogFilesSuccsess = System.Configuration.ConfigurationSettings.AppSettings["DeviceSuccsessFolder"];
-
-                    string DestFolderPathSuccsess = Path.Combine(LogFilesSuccsess, devicename + "_" + multipleports.ToString());
-
-                    if (!Directory.Exists(DestFolderPathSuccsess))
-                    {
-                        Directory.CreateDirectory(DestFolderPathSuccsess);
-
-
-                    }
-                    string LofFiles = Path.Combine(DestFolderPathSuccsess, FolderName);
-                    if (!Directory.Exists(LofFiles))
-                    {
-                        Directory.CreateDirectory(LofFiles);
-
+                        LogData("DeviceExceptionFolder", devicename + "_" + multipleports.ToString(), DateTime.Now.ToString("yyyyMMdd"), "Unexpected exception : {0}" + e.ToString());
 
                     }
 
+                   
 
-                    string LofFilesNewFile = Path.Combine(LofFiles, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
-
-                    bool fileExist = File.Exists(LofFilesNewFile);
-
-
-                    if (fileExist)
-                    {
-                        File.AppendAllText(LofFilesNewFile, "Log Generated on: " + DateTime.Now + "\n Total File Sent: " + filesent + "\n Total Acknowledgment Recived: " + ackRec + Environment.NewLine);
-
-                    }
-                    else
-                    {
-                        StreamWriter sw6 = new StreamWriter(LofFilesNewFile);
-                        sw6.Write("Log Generated on: " + DateTime.Now + "\n Total File Sent: " + filesent + "\n Total Acknowledgment Recived: " + ackRec + Environment.NewLine);
-                        sw6.Flush();
-                        sw6.Close();
-                    }
-
-                    Console.WriteLine("\n Total File Sent: " + filesent);
-                    Console.WriteLine("\n Total Acknowledgment Recived: " + ackRec);
                     filesent = 0;
                     ackRec = 0;
 
@@ -350,34 +177,8 @@ namespace Client
             }
             else 
             {
-                string ExceptionFolder = System.Configuration.ConfigurationSettings.AppSettings["DeviceExceptionFolder"];
-                
-                string Main = "IP Exceptions";
-                string FolderName = DateTime.Now.ToString("yyyyMMdd");
-                string DestFolderPathFinal3 = Path.Combine(ExceptionFolder, Main);
+                LogData("DeviceExceptionFolderMain", "IP Exceptions", DateTime.Now.ToString("yyyyMMdd"), "Unexpected exception : {0}" + "IP address not provided");
 
-                if (!Directory.Exists(DestFolderPathFinal3))
-                {
-                    Directory.CreateDirectory(DestFolderPathFinal3);
-
-
-                }
-                string DestFolderPathFinal = Path.Combine(DestFolderPathFinal3, FolderName);
-                if (!Directory.Exists(DestFolderPathFinal))
-                {
-                    Directory.CreateDirectory(DestFolderPathFinal);
-
-
-                }
-
-                string ExceptionFolderNewFile = Path.Combine(DestFolderPathFinal, Path.GetFileName(DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".txt"));
-
-
-                StreamWriter sw = new StreamWriter(ExceptionFolderNewFile);
-                sw.Write("Log Generated on: " + DateTime.Now + "\n" + "IP address not provided");
-                sw.Flush();
-                sw.Close();
-                Console.WriteLine("\n IP address not provided...");
             }
            
 
@@ -385,5 +186,49 @@ namespace Client
 
           Console.ReadKey();
         }
-}
+
+
+        public static void LogData(string folderPath, string joinfolder, string filename, string message)
+        {
+
+            string Folder = System.Configuration.ConfigurationSettings.AppSettings[folderPath];
+            string FolderNameDate = DateTime.Now.ToString("yyyyMMdd");
+            string DestFolderPath = Path.Combine(Folder, joinfolder);
+
+            if (!Directory.Exists(DestFolderPath))
+            {
+                Directory.CreateDirectory(DestFolderPath);
+
+
+            }
+            string DestFolderPathFinal = Path.Combine(DestFolderPath, FolderNameDate);
+            if (!Directory.Exists(DestFolderPathFinal))
+            {
+                Directory.CreateDirectory(DestFolderPathFinal);
+
+
+            }
+
+            string FolderWithFile = Path.Combine(DestFolderPathFinal, Path.GetFileName(filename + ".txt"));
+
+            bool fileExist = File.Exists(FolderWithFile);
+
+            if (fileExist)
+            {
+                File.AppendAllText(FolderWithFile, "Log Generated on: " + DateTime.Now + "\n" + message);
+
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter(FolderWithFile);
+                sw.Write("Log Generated on: " + DateTime.Now + "\n" + message);
+                sw.Flush();
+                sw.Close();
+                sw.Dispose();
+            }
+            Console.WriteLine("\n" + message);
+
+        }
+
+    }
 }

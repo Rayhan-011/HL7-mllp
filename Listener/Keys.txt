@@ -1,9 +1,11 @@
 ﻿<appSettings>
-<add key="DeviceIP1" value="Device1:11000"/>
-  <add key="DeviceIP2" value="Device2:1100"/>
 
-    <add key="DestinationFolder" value="E:\HL7Listener\EDI"/>
-    <add key="ListenerExceptionFolder" value="E:\HL7Listener\Logs\Listener\Exceptions"/>
-    <add key="ListenerExceptionFolderMain" value="E:\HL7Listener\Logs\Listener\Exceptions\Main"/>
-    <add key="ListenerSuccsessFolder" value="E:\HL7Listener\Logs\Listener\Succsess"/>
+    <add key="DeviceIP1" value="Device1:192.168.47.24:11000"/>
+    <add key="DeviceIP2" value="Device2:192.168.47.24:1100"/>
+
+    <add key="DestinationFolder" value="G:\HL7Listener\EDI"/>
+    <add key="ListenerExceptionFolder" value="G:\HL7Listener\Logs\Listener\Exceptions"/>
+    <add key="ListenerExceptionFolderMain" value="G:\HL7Listener\Logs\Listener\Exceptions\Main"/>
+    <add key="ListenerSuccsessFolder" value="G:\HL7Listener\Logs\Listener\Succsess"/>
+    
 </appSettings>

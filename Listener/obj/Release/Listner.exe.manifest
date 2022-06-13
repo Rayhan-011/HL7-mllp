@@ -49,17 +49,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nyn68PBBP3pa5GbeHORS1fxP21G649bFLZwmBqJTJ7A=</dsig:DigestValue>
+        <dsig:DigestValue>x5l8LOguK2J9W8AhJfOdW+lSSgWs6zZXX2nlDmSDR8o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Listner.exe.config" size="791">
+  <file name="Listner.exe.config" size="654">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ASDZh4X+5e4swiVphexno748AJBmSCFIfDhtEDYVtvM=</dsig:DigestValue>
+      <dsig:DigestValue>mKoHN2fyuLkIdy63bARRBkjWcqSDTr5jrH+Uc6qfdww=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
