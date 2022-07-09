@@ -1,6 +1,6 @@
 <h1>MLLP.HL7Reader</h1>
 <P>
- Minimal lower-layer protocol to communicate with servers that use minimal LLP. It's effort where readers and writer can be used to easily communicate with thes Message Sender Devices.
+This is a minimal lower-layer protocol that can be used to communicate with devices that use minimal LLP. It's easy to use and allows readers and writers to communicate with Message Sender Devices.
 </P>
 
 <P>
