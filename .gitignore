@@ -10,3 +10,12 @@
 */.vs
 
 
+Device/.vs/Client/v17/.suo
+Device/.vs/Client/v17/.suo
+Device/obj/Debug/Client.csproj.AssemblyReference.cache
+*.txt
+Device/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Listener/.vs/Listner/v17/.suo
+Listener/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Listener/obj/Debug/Listner.csproj.AssemblyReference.cache
+Listener/obj/Debug/Listner.csproj.FileListAbsolute.txt

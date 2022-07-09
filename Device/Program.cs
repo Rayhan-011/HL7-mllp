@@ -65,7 +65,8 @@ namespace Client
                         // Create a TCP/IP  socket.
                         Socket sender = new Socket(ipAddress.AddressFamily,
                         SocketType.Stream, ProtocolType.Tcp);
-
+                         
+                                System.Threading.Thread.Sleep(3000);
                         // Connect to Remote EndPoint
                         sender.Connect(remoteEP);
 
@@ -156,10 +157,10 @@ namespace Client
 
                         // Encode the data string into a byte array.
 
-                        byte[] msg3 = Encoding.ASCII.GetBytes("<EOF>");
+                       // byte[] msg3 = Encoding.ASCII.GetBytes("<EOF>");
                         
                         // Send the data through the socket.
-                        int bytesSent2 = sender.Send(msg3);
+                       // int bytesSent2 = sender.Send(msg3);
                        
                     }
                     catch (Exception e)
