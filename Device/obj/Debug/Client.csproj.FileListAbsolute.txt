@@ -10,3 +10,15 @@ E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.exe.manifest
 E:\Work.H_Sarah\Code-Local\Socket\Device\bin\Debug\Client.application
 E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.exe.manifest
 E:\Work.H_Sarah\Code-Local\Socket\Device\obj\Debug\Client.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\Client.csproj.AssemblyReference.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\Client.csproj.SuggestedBindingRedirects.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Debug\MessageSender.exe.config
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Debug\MessageSender.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Debug\MessageSender.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Debug\MessageSender.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\bin\Debug\MessageSender.pdb
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\MessageSender.exe.manifest
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\MessageSender.application
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\MessageSender.exe
+D:\My.Work\Projects\Remote\JOSE\Code-Local\Socket\Device\obj\Debug\MessageSender.pdb
